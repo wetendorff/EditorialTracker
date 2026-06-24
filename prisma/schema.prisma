@@ -11,3 +11,40 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+enum Role {
+  EDITOR
+  CONTRIBUTOR
+}
+
+enum ContentStatus {
+  Idea
+  Draft
+  Review
+  Published
+}
+
+enum ContentType {
+  Article
+  Video
+  Podcast
+  Other
+}
+
+model User {
+  id           String        @id @default(cuid())
+  name         String
+  password     String
+  role         Role
+  contentItems ContentItem[]
+}
+
+model ContentItem {
+  id       String        @id @default(cuid())
+  title    String
+  status   ContentStatus
+  authorId String
+  author   User          @relation(fields: [authorId], references: [id])
+  deadline DateTime?
+  type     ContentType
+}
