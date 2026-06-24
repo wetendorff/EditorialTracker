@@ -34,6 +34,7 @@ enum ContentType {
 model User {
   id           String        @id @default(cuid())
   username     String        @unique
+  fullName     String
   password     String
   role         Role
   contentItems ContentItem[]
