@@ -1,0 +1,35 @@
+import type { ContentItemWithAuthor } from "@/app/actions/content";
+import { formatDeadline } from "../lib/format";
+
+export default function ContentListItem({
+	item,
+}: {
+	item: ContentItemWithAuthor;
+}) {
+	const isOverdue = item.deadline
+		? new Date(item.deadline) < new Date()
+		: false;
+
+	return (
+		<li className="border-t last:border-b border-border px-3 py-2 hover:bg-surface">
+			<div className="w-full flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+				<div>
+					<span className="font-serif text-lg">{item.title}</span>
+					<br />
+					<span className="text-muted text-sm">
+						{item.type} - Af {item.author.fullName}
+					</span>
+				</div>
+				<div className="text-right">
+					<span className="text-sm">{item.status}</span>
+					<br />
+					<span
+						className={`text-sm ${isOverdue ? "text-accent" : "text-muted"}`}
+					>
+						{formatDeadline(item.deadline)}
+					</span>
+				</div>
+			</div>
+		</li>
+	);
+}
