@@ -40,7 +40,7 @@ export default function LoginForm({
 		setIsPending(false);
 
 		if (result?.error) {
-			setErrorMessage("Forkert brugernavn eller adgangskode.");
+			setErrorMessage("Wrong username or password.");
 			return;
 		}
 
@@ -56,7 +56,7 @@ export default function LoginForm({
 		const password = String(formData.get("password") ?? "");
 
 		if (!username || !password) {
-			setErrorMessage("Unknown email or password.");
+			setErrorMessage("Unknown username or password.");
 			return;
 		}
 
