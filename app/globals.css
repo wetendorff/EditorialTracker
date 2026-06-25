@@ -113,4 +113,8 @@ body {
 			color: var(--background);
 		}
 	}
+
+	dialog::backdrop {
+		background: rgba(36, 36, 36, 0.4);
+	}
 }
