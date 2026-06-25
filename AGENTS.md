@@ -4,4 +4,9 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 
 Follow YAGNI principles.
+
+## Package Manager
+
+This project uses **bun** as the package manager. Always use `bun` commands instead of `npm`, `yarn`, or `pnpm`.
+
 <!-- END:nextjs-agent-rules -->
