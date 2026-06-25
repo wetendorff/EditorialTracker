@@ -2,34 +2,18 @@
 
 import { revalidatePath } from "next/cache";
 import { notFound, redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 import type { ContentStatus, ContentType } from "@/app/generated/prisma/client";
 import type { ContentItemGetPayload } from "@/app/generated/prisma/models/ContentItem";
-import { authOptions } from "@/lib/auth-options";
 import { isAllowedTransition } from "@/lib/content-status";
 import { prisma } from "@/lib/prisma";
+import { requireSessionUser } from "@/lib/session";
 
 export type ContentItemWithAuthor = ContentItemGetPayload<{
 	include: { author: { select: { fullName: true } } };
 }>;
 
-type SessionUser = { id: string; role: string };
-
-async function requireSessionUser(): Promise<SessionUser> {
-	const session = await getServerSession(authOptions);
-	if (!session?.user) {
-		redirect("/login");
-	}
-	return session.user as SessionUser;
-}
-
 export async function getContentItems(): Promise<ContentItemWithAuthor[]> {
-	const session = await getServerSession(authOptions);
-	if (!session?.user) {
-		return [];
-	}
-
-	const user = session.user as SessionUser;
+	const user = await requireSessionUser();
 
 	return prisma.contentItem.findMany({
 		where:

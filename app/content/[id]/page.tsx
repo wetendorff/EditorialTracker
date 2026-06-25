@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 import {
 	archiveContentItem,
 	getContentItem,
@@ -9,24 +7,19 @@ import {
 import { ContentItemEditDialog } from "@/components/ContentItemEditDialog";
 import Pill from "@/components/Pill";
 import TopMenu from "@/components/TopMenu";
-import { authOptions } from "@/lib/auth-options";
 import { nextStatuses } from "@/lib/content-status";
 import { formatDeadline } from "@/lib/format";
+import { requireSessionUser } from "@/lib/session";
 
 export default async function ContentDetailPage({
 	params,
 }: PageProps<"/content/[id]">) {
 	const { id } = await params;
 
-	const session = await getServerSession(authOptions);
-	if (!session) {
-		redirect("/login");
-	}
-
-	const user = session.user as { name?: string; role?: string };
+	const user = await requireSessionUser();
 	const item = await getContentItem(id);
 
-	const allowedNext = nextStatuses(item.status, user.role ?? "");
+	const allowedNext = nextStatuses(item.status, user.role);
 	const isOverdue = item.deadline
 		? new Date(item.deadline) < new Date()
 		: false;
@@ -34,7 +27,7 @@ export default async function ContentDetailPage({
 
 	return (
 		<div>
-			<TopMenu fullName={user.name ?? ""} role={user.role ?? ""} />
+			<TopMenu fullName={user.name} role={user.role} />
 
 			<main className="p-6 max-w-4xl mx-auto">
 				<Link
