@@ -48,4 +48,5 @@ model ContentItem {
   author   User          @relation(fields: [authorId], references: [id])
   deadline DateTime?
   type     ContentType
+  archived Boolean       @default(false)
 }
