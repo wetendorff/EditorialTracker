@@ -16,16 +16,15 @@ export default function ContentListItem({
 		<li className="border-t last:border-b border-border px-3 py-2 hover:bg-surface">
 			<Link
 				href={`/content/${item.id}`}
-				className="w-full flex flex-wrap items-center justify-between gap-x-3 gap-y-1"
+				className="w-full flex items-center justify-between gap-x-3 gap-y-1"
 			>
-				<div>
-					<span className="font-serif text-lg">{item.title}</span>
-					<br />
-					<span className="text-muted text-sm">
+				<div className="min-w-0">
+					<div className="truncate font-serif text-lg">{item.title}</div>
+					<div className="truncate text-muted text-sm">
 						{item.type} · By {item.author.fullName}
-					</span>
+					</div>
 				</div>
-				<div className="text-right">
+				<div className="text-right shrink-0">
 					<StatusDot status={item.status} />
 					<br />
 					<span

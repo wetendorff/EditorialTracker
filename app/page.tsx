@@ -11,7 +11,7 @@ export default async function Home() {
 	return (
 		<div>
 			<TopMenu fullName={user.name} role={user.role} />
-			<main className="p-6 max-w-4xl mx-auto">
+			<main className="p-4 sm:p-6 max-w-4xl mx-auto">
 				<section className="mt-8">
 					<div className="flex items-center justify-between">
 						<h2 className="font-serif text-3xl">Content items</h2>
