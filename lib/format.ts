@@ -1,12 +1,8 @@
 export function formatDeadline(deadline: Date | string | null): string {
-	if (!deadline) {
-		return "Ingen deadline";
-	}
-
 	const parsedDeadline =
 		typeof deadline === "string" ? new Date(deadline) : deadline;
 
-	if (Number.isNaN(parsedDeadline.getTime())) {
+	if (parsedDeadline === null || Number.isNaN(parsedDeadline.getTime())) {
 		return "Ingen deadline";
 	}
 
