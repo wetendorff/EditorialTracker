@@ -20,7 +20,6 @@ export async function getContentItems(): Promise<ContentItemWithAuthor[]> {
 	}
 
 	const user = session.user as { id: string; role: string };
-	console.log("User:", user);
 
 	return prisma.contentItem.findMany({
 		where: user.role === "EDITOR" ? undefined : { authorId: user.id },
