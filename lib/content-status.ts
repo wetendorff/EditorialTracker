@@ -1,4 +1,22 @@
-import type { ContentStatus } from "@/app/generated/prisma/client";
+import type { ContentStatus, ContentType } from "@/app/generated/prisma/client";
+import {
+	ContentStatus as ContentStatusEnum,
+	ContentType as ContentTypeEnum,
+} from "@/app/generated/prisma/enums";
+
+export const TYPE_OPTIONS: ContentType[] = [
+	ContentTypeEnum.Article,
+	ContentTypeEnum.Video,
+	ContentTypeEnum.Podcast,
+	ContentTypeEnum.Other,
+];
+
+export const STATUS_OPTIONS: ContentStatus[] = [
+	ContentStatusEnum.Idea,
+	ContentStatusEnum.Draft,
+	ContentStatusEnum.Review,
+	ContentStatusEnum.Published,
+];
 
 export function nextStatuses(
 	current: ContentStatus,

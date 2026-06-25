@@ -2,25 +2,7 @@
 
 import { useRef, useTransition } from "react";
 import { createContentItem } from "@/app/actions/content";
-import type { ContentStatus, ContentType } from "@/app/generated/prisma/client";
-import {
-	ContentStatus as ContentStatusEnum,
-	ContentType as ContentTypeEnum,
-} from "@/app/generated/prisma/enums";
-
-const TYPE_OPTIONS: ContentType[] = [
-	ContentTypeEnum.Article,
-	ContentTypeEnum.Video,
-	ContentTypeEnum.Podcast,
-	ContentTypeEnum.Other,
-];
-
-const STATUS_OPTIONS: ContentStatus[] = [
-	ContentStatusEnum.Idea,
-	ContentStatusEnum.Draft,
-	ContentStatusEnum.Review,
-	ContentStatusEnum.Published,
-];
+import { STATUS_OPTIONS, TYPE_OPTIONS } from "@/lib/content-status";
 
 export function ContentItemCreateDialog() {
 	const ref = useRef<HTMLDialogElement>(null);

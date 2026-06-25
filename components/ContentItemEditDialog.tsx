@@ -3,15 +3,8 @@
 import { useRef, useTransition } from "react";
 import type { ContentItemWithAuthor } from "@/app/actions/content";
 import { updateContentItem } from "@/app/actions/content";
-import type { ContentStatus, ContentType } from "@/app/generated/prisma/client";
-import { ContentType as ContentTypeEnum } from "@/app/generated/prisma/enums";
-
-const TYPE_OPTIONS: ContentType[] = [
-	ContentTypeEnum.Article,
-	ContentTypeEnum.Video,
-	ContentTypeEnum.Podcast,
-	ContentTypeEnum.Other,
-];
+import type { ContentStatus } from "@/app/generated/prisma/client";
+import { TYPE_OPTIONS } from "@/lib/content-status";
 
 export function ContentItemEditDialog({
 	item,
