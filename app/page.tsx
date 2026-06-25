@@ -7,7 +7,6 @@ import {
 } from "@/app/generated/prisma/enums";
 import TopMenu from "@/components/TopMenu";
 import { authOptions } from "@/lib/auth-options";
-import { prisma } from "@/lib/prisma";
 import ContentItemList from "../components/ContentItemList";
 import { createContentItem, getContentItems } from "./actions/content";
 
@@ -30,28 +29,13 @@ export default async function Home() {
 		redirect("/login");
 	}
 
-	const userId = (session.user as { id?: string } | undefined)?.id;
-	if (!userId) {
-		redirect("/login");
-	}
-
-	const dbUser = await prisma.user.findUnique({
-		where: { id: userId },
-		select: {
-			id: true,
-			fullName: true,
-			role: true,
-		},
-	});
-	if (!dbUser) {
-		redirect("/login");
-	}
-
 	const contentItems = await getContentItems();
+
+	const user = session.user as { name?: string; role?: string };
 
 	return (
 		<div>
-			<TopMenu fullName={dbUser.fullName} role={dbUser.role} />
+			<TopMenu fullName={user.name ?? ""} role={user.role ?? ""} />
 			<main className="p-6 max-w-4xl mx-auto">
 				<section className="mt-8 bg-surface border border-border rounded-xl p-5">
 					<h2 className="font-serif text-xl">Nyt content item</h2>
