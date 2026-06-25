@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
+	--background: #f0f0ea;
+	--foreground: #242424;
+	--surface: #f9f9f3;
+	--muted: #96908a;
+	--accent: #fc7230;
+	--serif:
+		Baskerville, "Goudy Old Style", "Hoefler Text", Garamond, Georgia, serif;
+	--sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+	--mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
+@theme {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-surface: var(--surface);
+	--color-muted: var(--muted);
+	--color-border: #e2e1d8;
+	--color-accent: var(--accent);
+	--font-sans: var(--sans);
+	--font-mono: var(--mono);
+	--font-serif: var(--serif);
 }
 
 body {
 	background: var(--background);
 	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: var(--sans);
+}
+
+@layer components {
+	.input,
+	select {
+		width: 100%;
+		font-family: var(--sans);
+		font-size: 15px;
+		padding: 10px 12px;
+		border: 1px solid var(--color-border);
+		background: var(--surface);
+		color: var(--foreground);
+		border-radius: 7px;
+
+		&:focus {
+			outline: none;
+			border-color: var(--accent);
+		}
+	}
+
+	label {
+		display: block;
+		font-size: 13px;
+		color: var(--muted);
+		margin-bottom: 6px;
+	}
+
+	.btn {
+		font-family: var(--sans);
+		font-size: 14px;
+		padding: 9px 16px;
+		border: 1px solid var(--color-border);
+		background: var(--surface);
+		color: var(--foreground);
+		border-radius: 7px;
+		cursor: pointer;
+		transition:
+			border-color 0.15s,
+			background 0.15s;
+
+		&:hover {
+			border-color: var(--muted);
+		}
+
+		&:disabled {
+			opacity: 0.4;
+			cursor: not-allowed;
+		}
+	}
+
+	.btn-primary {
+		background: var(--accent);
+		border-color: var(--accent);
+		color: #fff;
+		&:hover {
+			background: #e8631f;
+			border-color: #e8631f;
+		}
+	}
 }
