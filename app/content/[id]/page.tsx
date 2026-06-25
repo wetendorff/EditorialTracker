@@ -58,6 +58,20 @@ export default async function ContentDetailPage({
 								</>
 							)}
 						</p>
+						<div className="mt-4 text-base text-foreground/80 max-w-prose">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+								vehicula, nisl vel tincidunt lacinia, nunc nisl aliquam nunc,
+								nec aliquam nisl nunc vel nisl. Sed vehicula, nisl vel tincidunt
+								lacinia, nunc nisl aliquam nunc, nec aliquam nisl nunc vel nisl.
+							</p>
+							<p className="mt-2">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+								vehicula, nisl vel tincidunt lacinia, nunc nisl aliquam nunc,
+								nec aliquam nisl nunc vel nisl. Sed vehicula, nisl vel tincidunt
+								lacinia, nunc nisl aliquam nunc, nec aliquam nisl nunc vel nisl.
+							</p>
+						</div>
 					</div>
 
 					<div className="mt-6 flex flex-wrap gap-3">
