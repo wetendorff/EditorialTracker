@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { ContentItemWithAuthor } from "@/app/actions/content";
 import type { ContentStatus } from "@/app/generated/prisma/client";
 import ContentListItem from "./ContentListItem";
@@ -22,13 +22,10 @@ export default function ContentItemList({
 }) {
 	const [activeFilter, setActiveFilter] = useState<FilterStatus>("All");
 
-	const filteredItems = useMemo(
-		() =>
-			activeFilter === "All"
-				? items
-				: items.filter((item) => item.status === activeFilter),
-		[activeFilter, items],
-	);
+	const filteredItems =
+		activeFilter === "All"
+			? items
+			: items.filter((item) => item.status === activeFilter);
 
 	return (
 		<div className="mt-4">
