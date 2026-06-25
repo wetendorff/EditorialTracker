@@ -52,9 +52,9 @@ export function ContentItemEditDialog({
 				}}
 			>
 				<form onSubmit={handleSubmit} className="grid gap-4">
-					<h2 className="font-serif text-lg">Rediger content item</h2>
+					<h2 className="font-serif text-3xl">Edit content item</h2>
 					<div>
-						<label htmlFor="title">Titel</label>
+						<label htmlFor="title">Title</label>
 						<input
 							id="title"
 							name="title"
@@ -106,10 +106,10 @@ export function ContentItemEditDialog({
 							className="btn"
 							onClick={() => ref.current?.close()}
 						>
-							Annuller
+							Cancel
 						</button>
 						<button type="submit" className="btn btn-primary">
-							Gem
+							Save
 						</button>
 					</div>
 				</form>

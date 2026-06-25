@@ -3,7 +3,7 @@ export function formatDeadline(deadline: Date | string | null): string {
 		typeof deadline === "string" ? new Date(deadline) : deadline;
 
 	if (parsedDeadline === null || Number.isNaN(parsedDeadline.getTime())) {
-		return "Ingen deadline";
+		return "-";
 	}
 
 	const dateFormatted = new Intl.DateTimeFormat("da-DK", {

@@ -21,14 +21,14 @@ export default function ContentListItem({
 					<span className="font-serif text-lg">{item.title}</span>
 					<br />
 					<span className="text-muted text-sm">
-						{item.type} - Af {item.author.fullName}
+						{item.type} · By {item.author.fullName}
 					</span>
 				</div>
 				<div className="text-right">
 					<span className="text-sm">{item.status}</span>
 					<br />
 					<span
-						className={`text-sm ${isOverdue ? "text-accent" : "text-muted"}`}
+						className={`text-sm ${isOverdue ? "text-accent font-bold" : "text-muted"}`}
 					>
 						{formatDeadline(item.deadline)}
 					</span>

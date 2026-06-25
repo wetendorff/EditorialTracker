@@ -56,7 +56,7 @@ export default function LoginForm({
 		const password = String(formData.get("password") ?? "");
 
 		if (!username || !password) {
-			setErrorMessage("Udfyld både brugernavn og adgangskode.");
+			setErrorMessage("Unknown email or password.");
 			return;
 		}
 
@@ -75,8 +75,7 @@ export default function LoginForm({
 				{showQuickLogin ? (
 					<>
 						<p className="text-muted mt-1.5">
-							Vaelg en konto for at logge ind - alle bruger adgangskoden{" "}
-							<strong>test1234</strong>.
+							Use the quick login buttons below to log in as a test user.
 						</p>
 						<div className="space-y-2 mt-6">
 							{quickLoginUsers.map((user) => (
@@ -90,13 +89,13 @@ export default function LoginForm({
 								</UserLoginButton>
 							))}
 						</div>
-						<TextDivider text="eller login manuelt" />
+						<TextDivider text=" or sign in manually" />
 					</>
 				) : null}
 
 				<form onSubmit={onManualLoginSubmit}>
 					<div>
-						<label htmlFor="username">Brugernavn</label>
+						<label htmlFor="username">Username</label>
 						<input
 							type="text"
 							id="username"
@@ -107,7 +106,7 @@ export default function LoginForm({
 						/>
 					</div>
 					<div className="mt-4">
-						<label htmlFor="password">Adgangskode</label>
+						<label htmlFor="password">Password</label>
 						<input
 							type="password"
 							id="password"
@@ -125,7 +124,7 @@ export default function LoginForm({
 						className="btn btn-primary w-full mt-10"
 						disabled={isPending}
 					>
-						{isPending ? "Logger ind..." : "Login"}
+						{isPending ? "Logging in..." : "Login"}
 					</button>
 				</form>
 			</section>

@@ -34,14 +34,14 @@ export default async function ContentDetailPage({
 					href="/"
 					className="inline-block text-sm text-muted hover:text-foreground"
 				>
-					← Tilbage
+					← Back to content items
 				</Link>
 
 				<section className="mt-4 bg-surface border border-border rounded-xl p-5">
 					<div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
 						<div>
-							<h1 className="font-serif text-xl">{item.title}</h1>
-							<p className="text-sm text-muted">Af {item.author.fullName}</p>
+							<h2 className="font-serif text-3xl">{item.title}</h2>
+							<p className="text-sm text-muted">By {item.author.fullName}</p>
 						</div>
 						<div className="flex gap-2 items-center">
 							<Pill>{item.type}</Pill>
@@ -60,7 +60,7 @@ export default async function ContentDetailPage({
 						{canPublish ? (
 							<form action={publishContentItem.bind(null, item.id)}>
 								<button type="submit" className="btn btn-primary">
-									Publicér
+									Publish
 								</button>
 							</form>
 						) : null}
@@ -69,7 +69,7 @@ export default async function ContentDetailPage({
 
 						<form action={archiveContentItem.bind(null, item.id)}>
 							<button type="submit" className="btn">
-								Arkivér
+								Archive
 							</button>
 						</form>
 					</div>

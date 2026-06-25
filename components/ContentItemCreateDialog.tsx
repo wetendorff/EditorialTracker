@@ -42,7 +42,7 @@ export function ContentItemCreateDialog() {
 				className="btn btn-primary"
 				onClick={() => ref.current?.showModal()}
 			>
-				Opret item
+				Create
 			</button>
 			{/* biome-ignore lint/a11y/useKeyWithClickEvents: backdrop-click-to-close is a mouse enhancement; native Esc closes for keyboard users */}
 			<dialog
@@ -55,9 +55,9 @@ export function ContentItemCreateDialog() {
 				}}
 			>
 				<form onSubmit={handleSubmit} className="grid gap-4">
-					<h2 className="font-serif text-lg">Nyt content item</h2>
+					<h2 className="font-serif text-2xl">New content item</h2>
 					<div>
-						<label htmlFor="title">Titel</label>
+						<label htmlFor="title">Title</label>
 						<input id="title" name="title" className="input" required />
 					</div>
 					<div>
@@ -95,10 +95,10 @@ export function ContentItemCreateDialog() {
 							className="btn"
 							onClick={() => ref.current?.close()}
 						>
-							Annuller
+							Cancel
 						</button>
 						<button type="submit" className="btn btn-primary">
-							Opret
+							Create
 						</button>
 					</div>
 				</form>
