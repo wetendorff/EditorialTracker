@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ContentItemWithAuthor } from "@/app/actions/content";
 import { formatDeadline } from "../lib/format";
+import { StatusDot } from "./StatusDot";
 
 export default function ContentListItem({
 	item,
@@ -25,7 +26,7 @@ export default function ContentListItem({
 					</span>
 				</div>
 				<div className="text-right">
-					<span className="text-sm">{item.status}</span>
+					<StatusDot status={item.status} />
 					<br />
 					<span
 						className={`text-sm ${isOverdue ? "text-accent font-bold" : "text-muted"}`}

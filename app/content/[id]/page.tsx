@@ -6,6 +6,7 @@ import {
 } from "@/app/actions/content";
 import { ContentItemEditDialog } from "@/components/ContentItemEditDialog";
 import Pill from "@/components/Pill";
+import { StatusDot } from "@/components/StatusDot";
 import TopMenu from "@/components/TopMenu";
 import { nextStatuses } from "@/lib/content-status";
 import { formatDeadline } from "@/lib/format";
@@ -38,22 +39,25 @@ export default async function ContentDetailPage({
 				</Link>
 
 				<section className="mt-4 bg-surface border border-border rounded-xl p-5">
-					<div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-						<div>
-							<h2 className="font-serif text-3xl">{item.title}</h2>
-							<p className="text-sm text-muted">By {item.author.fullName}</p>
-						</div>
-						<div className="flex gap-2 items-center">
-							<Pill>{item.type}</Pill>
-							<Pill>{item.status}</Pill>
-						</div>
+					<div className="flex justify-between">
+						<StatusDot status={item.status} />
+						<Pill>{item.type}</Pill>
 					</div>
-
-					<div className="mt-4 text-sm">
-						<span className="text-muted">Deadline: </span>
-						<span className={isOverdue ? "text-accent" : "text-foreground"}>
-							{formatDeadline(item.deadline)}
-						</span>
+					<div className="mt-2">
+						<h2 className="font-serif text-3xl">{item.title}</h2>
+						<p className="text-xs text-muted mt-2">
+							By {item.author.fullName}
+							{item.deadline && (
+								<>
+									{" · "}
+									<span
+										className={isOverdue ? "text-accent" : "text-foreground"}
+									>
+										Deadline: {formatDeadline(item.deadline)}
+									</span>
+								</>
+							)}
+						</p>
 					</div>
 
 					<div className="mt-6 flex flex-wrap gap-3">
