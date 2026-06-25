@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ContentItemWithAuthor } from "@/app/actions/content";
 import { formatDeadline } from "../lib/format";
 
@@ -12,7 +13,10 @@ export default function ContentListItem({
 
 	return (
 		<li className="border-t last:border-b border-border px-3 py-2 hover:bg-surface">
-			<div className="w-full flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+			<Link
+				href={`/content/${item.id}`}
+				className="w-full flex flex-wrap items-center justify-between gap-x-3 gap-y-1"
+			>
 				<div>
 					<span className="font-serif text-lg">{item.title}</span>
 					<br />
@@ -29,7 +33,7 @@ export default function ContentListItem({
 						{formatDeadline(item.deadline)}
 					</span>
 				</div>
-			</div>
+			</Link>
 		</li>
 	);
 }
