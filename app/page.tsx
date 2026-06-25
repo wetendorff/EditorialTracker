@@ -14,7 +14,7 @@ export default async function Home() {
 			<main className="p-6 max-w-4xl mx-auto">
 				<section className="mt-8">
 					<div className="flex items-center justify-between">
-						<h2 className="font-serif text-xl">Content items</h2>
+						<h2 className="font-serif text-3xl">Content items</h2>
 						<ContentItemCreateDialog />
 					</div>
 					<ContentItemList items={contentItems} />

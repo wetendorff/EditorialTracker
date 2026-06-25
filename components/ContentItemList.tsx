@@ -28,7 +28,7 @@ export default function ContentItemList({
 			: items.filter((item) => item.status === activeFilter);
 
 	return (
-		<div className="mt-4">
+		<div className="mt-6">
 			<div className="flex flex-wrap gap-2">
 				{FILTER_STATUSES.map((status) => {
 					const isActive = activeFilter === status;
@@ -48,11 +48,9 @@ export default function ContentItemList({
 
 			<div className="mt-4">
 				{filteredItems.length === 0 ? (
-					<p className="mt-4 text-sm text-muted">
-						Ingen items i denne filtervisning.
-					</p>
+					<p className="mt-4 text-sm text-muted">No items here yet.</p>
 				) : (
-					<ul className="mt-4 space-y-2">
+					<ul className="mt-4">
 						{filteredItems.map((item) => (
 							<ContentListItem item={item} key={item.id} />
 						))}
