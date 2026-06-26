@@ -80,6 +80,16 @@ export function ContentItemEditDialog({
 							}
 						/>
 					</div>
+					<div>
+						<label htmlFor="body">Body</label>
+						<textarea
+							id="body"
+							name="body"
+							className="input"
+							rows={6}
+							defaultValue={item.body ?? ""}
+						/>
+					</div>
 					{allowedNext.length > 0 ? (
 						<div>
 							<label htmlFor="status">Status</label>

@@ -62,6 +62,10 @@ export function ContentItemCreateDialog() {
 						/>
 					</div>
 					<div>
+						<label htmlFor="body">Body</label>
+						<textarea id="body" name="body" className="input" rows={6} />
+					</div>
+					<div>
 						<label htmlFor="status">Status</label>
 						<select id="status" name="status" defaultValue="Idea">
 							{STATUS_OPTIONS.map((status) => (

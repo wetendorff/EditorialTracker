@@ -49,4 +49,5 @@ model ContentItem {
   deadline DateTime?
   type     ContentType
   archived Boolean       @default(false)
+  body     String?
 }

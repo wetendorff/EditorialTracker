@@ -5,6 +5,7 @@ import {
 	publishContentItem,
 } from "@/app/actions/content";
 import { ContentItemEditDialog } from "@/components/ContentItemEditDialog";
+import { Paragraphs } from "@/components/Paragraphs";
 import Pill from "@/components/Pill";
 import { StatusDot } from "@/components/StatusDot";
 import TopMenu from "@/components/TopMenu";
@@ -58,21 +59,8 @@ export default async function ContentDetailPage({
 								</>
 							)}
 						</p>
-						<div className="mt-4 text-base text-foreground/80 max-w-prose">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-								vehicula, nisl vel tincidunt lacinia, nunc nisl aliquam nunc,
-								nec aliquam nisl nunc vel nisl. Sed vehicula, nisl vel tincidunt
-								lacinia, nunc nisl aliquam nunc, nec aliquam nisl nunc vel nisl.
-							</p>
-							<p className="mt-2">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-								vehicula, nisl vel tincidunt lacinia, nunc nisl aliquam nunc,
-								nec aliquam nisl nunc vel nisl. Sed vehicula, nisl vel tincidunt
-								lacinia, nunc nisl aliquam nunc, nec aliquam nisl nunc vel nisl.
-							</p>
-						</div>
 					</div>
+					<Paragraphs text={item.body} />
 
 					<div className="mt-6 flex flex-wrap gap-3">
 						{canPublish ? (
