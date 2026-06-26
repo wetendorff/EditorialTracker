@@ -7,6 +7,6 @@ Follow YAGNI principles.
 
 ## Package Manager
 
-This project uses **bun** as the package manager. Always use `bun` commands instead of `npm`, `yarn`, or `pnpm`.
+This project uses **npm** as the package manager. Always use `npm` commands instead of `yarn`, `pnpm`, or `bun`.
 
 <!-- END:nextjs-agent-rules -->

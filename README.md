@@ -26,20 +26,30 @@ Internal editorial workflow tracker built as a solution to the Frihedsbrevet tes
 - [next-auth 4](https://next-auth.js.org) — credentials provider, JWT sessions
 - [Tailwind CSS 4](https://tailwindcss.com)
 - [Biome 2](https://biomejs.dev) — formatting + linting
-- [Bun](https://bun.sh) — package manager + runtime
+- [Node.js 20+](https://nodejs.org) — runtime + package manager (`npm`)
 - [TypeScript 5](https://www.typescriptlang.org)
 
 ## Prerequisites
 
-- [Bun](https://bun.sh/docs/installation) 1.x
+- [Node.js](https://nodejs.org) 20+
+- Build toolchain (for the `better-sqlite3` native addon)
 
-> The app and seed script both work under Node 20+ via `npm`. Bun is recommended for faster `install`/`dev` startup. For npm users, replace `bun` commands below with `npm` equivalents (e.g. `npm install`, `npm run prisma:migrate`, `npm run prisma:seed`, `npm run dev`).
+> `better-sqlite3` is a C++ addon and is built from source on install. On Linux, install the build tools before running `npm install`:
+>
+> ```bash
+> # Debian/Ubuntu
+> sudo apt-get install -y python3 make g++
+> # Fedora/RHEL
+> sudo dnf install -y python3 make gcc-c++
+> ```
+>
+> macOS and Windows usually have the toolchain via Xcode Command Line Tools / Build Tools respectively; no extra step needed.
 
 ## Getting Started
 
 ```bash
 # 1. Install dependencies
-bun install
+npm install
 
 # 2. Copy environment file
 cp .env.example .env
@@ -47,13 +57,13 @@ cp .env.example .env
 # NEXTAUTH_SECRET via: openssl rand -base64 32
 
 # 3. Apply database migrations
-bun run prisma:migrate
+npm run prisma:migrate
 
 # 4. Seed test users + content items
-bun run prisma:seed
+npm run prisma:seed
 
 # 5. Start the dev server
-bun run dev
+npm run dev
 ```
 
 Open <http://localhost:3000> in your browser. You'll be redirected to `/login`.
@@ -78,14 +88,14 @@ In **dev mode** (non-production), the login screen renders one-click quick-login
 
 | Command | Description |
 | --- | --- |
-| `bun run dev` | Start dev server |
-| `bun run build` | Production build |
-| `bun run start` | Start production server (after `build`) |
-| `bun run lint` | Run Biome check |
-| `bun run format` | Run Biome auto-fix |
-| `bun run prisma:migrate` | Apply schema migrations to local SQLite |
-| `bun run prisma:seed` | Seed test users + content items |
-| `bun run prisma:studio` | Inspect/edit DB in browser (optional) |
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server (after `build`) |
+| `npm run lint` | Run Biome check |
+| `npm run format` | Run Biome auto-fix |
+| `npm run prisma:migrate` | Apply schema migrations to local SQLite |
+| `npm run prisma:seed` | Seed test users + content items |
+| `npm run prisma:studio` | Inspect/edit DB in browser (optional) |
 
 ## Project Structure
 

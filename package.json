@@ -27,21 +27,17 @@
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
-		"bun-types": "latest",
 		"prisma": "^7.8.0",
 		"tailwindcss": "^4",
 		"tsx": "^4.22.4",
 		"typescript": "^5"
 	},
-	"ignoreScripts": [
-		"sharp",
-		"unrs-resolver"
-	],
-	"trustedDependencies": [
-		"@prisma/engines",
-		"better-sqlite3",
-		"prisma",
-		"sharp",
-		"unrs-resolver"
-	]
+	"allowScripts": {
+		"@prisma/engines@7.8.0": true,
+		"better-sqlite3@12.11.1": true,
+		"esbuild@0.28.1": true,
+		"prisma@7.8.0": true,
+		"sharp@0.34.5": true,
+		"fsevents@2.3.3": true
+	}
 }
