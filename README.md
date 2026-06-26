@@ -11,7 +11,7 @@ Internal editorial workflow tracker built as a solution to the Frihedsbrevet tes
 - **Dashboard** — list of content items, filterable by status (Idea / Draft / Review / Published). Shows author and deadline per item. Overdue deadlines highlighted.
 - **Create content item** — dialog form on the dashboard.
 - **Content detail page** (`/content/[id]`)
-  - View item fields: title, author, type, status, deadline.
+  - View item fields: title, body, author, type, status, deadline.
   - Edit item — native `<dialog>` form, status transitions restricted to the allowed flow.
   - Publish item — Editor-only, only when status is `Review`.
   - Archive item — soft delete (`archived: true`), removed from dashboard.
@@ -122,6 +122,7 @@ proxy.ts             # next middleware (auth gate)
 | status | Enum | `Idea` \| `Draft` \| `Review` \| `Published` |
 | type | Enum | `Article` \| `Video` \| `Podcast` \| `Other` |
 | deadline | DateTime? | optional, overdue highlighted in UI |
+| body | String? | optional, content body text |
 | authorId | String | FK to User |
 | archived | Boolean | default `false`, soft-delete flag |
 
