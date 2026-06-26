@@ -8,6 +8,8 @@
 		"start": "next start",
 		"lint": "biome check .",
 		"format": "biome check --write .",
+		"postinstall": "prisma generate",
+		"prisma:generate": "prisma generate",
 		"prisma:seed": "prisma db seed",
 		"prisma:migrate": "prisma migrate dev",
 		"prisma:studio": "prisma studio"

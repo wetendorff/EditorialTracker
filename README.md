@@ -93,6 +93,7 @@ In **dev mode** (non-production), the login screen renders one-click quick-login
 | `npm run start` | Start production server (after `build`) |
 | `npm run lint` | Run Biome check |
 | `npm run format` | Run Biome auto-fix |
+| `npm run prisma:generate` | Generate Prisma Client (auto-runs on `npm install` via `postinstall`) |
 | `npm run prisma:migrate` | Apply schema migrations to local SQLite |
 | `npm run prisma:seed` | Seed test users + content items |
 | `npm run prisma:studio` | Inspect/edit DB in browser (optional) |
