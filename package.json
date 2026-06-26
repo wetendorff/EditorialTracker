@@ -8,7 +8,6 @@
 		"start": "next start",
 		"lint": "biome check .",
 		"format": "biome check --write .",
-		"prisma:pull": "prisma db pull",
 		"prisma:seed": "prisma db seed",
 		"prisma:migrate": "prisma migrate dev",
 		"prisma:studio": "prisma studio"
@@ -31,6 +30,7 @@
 		"bun-types": "latest",
 		"prisma": "^7.8.0",
 		"tailwindcss": "^4",
+		"tsx": "^4.22.4",
 		"typescript": "^5"
 	},
 	"ignoreScripts": [

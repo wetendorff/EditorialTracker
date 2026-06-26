@@ -31,9 +31,9 @@ Internal editorial workflow tracker built as a solution to the Frihedsbrevet tes
 
 ## Prerequisites
 
-- [Bun](https://bun.sh/docs/installation) 1.x (recommended runtime + package manager)
+- [Bun](https://bun.sh/docs/installation) 1.x
 
-> Node 20+ should work, but it hasn't been tested. Instructions below assume `bun`.
+> The app and seed script both work under Node 20+ via `npm`. Bun is recommended for faster `install`/`dev` startup. For npm users, replace `bun` commands below with `npm` equivalents (e.g. `npm install`, `npm run prisma:migrate`, `npm run prisma:seed`, `npm run dev`).
 
 ## Getting Started
 

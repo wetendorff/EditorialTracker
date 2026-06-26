@@ -1,85 +1,121 @@
 import "dotenv/config";
-import { Database } from "bun:sqlite";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaClient } from "../app/generated/prisma/client";
 
-function getDbPath(databaseUrl: string | undefined): string {
-	if (!databaseUrl) {
-		throw new Error("DATABASE_URL is not set");
-	}
-
-	if (!databaseUrl.startsWith("file:")) {
-		throw new Error(`Unsupported DATABASE_URL format: ${databaseUrl}`);
-	}
-
-	return databaseUrl.replace(/^file:/, "");
+const databaseUrl = process.env.DATABASE_URL;
+if (!databaseUrl) {
+	throw new Error("DATABASE_URL is not set.");
 }
 
-function main() {
-	const dbPath = getDbPath(process.env.DATABASE_URL);
-	const db = new Database(dbPath);
+const adapter = new PrismaBetterSqlite3({ url: databaseUrl });
+const prisma = new PrismaClient({ adapter });
 
-	try {
-		const upsertUser = db.prepare(`
-      INSERT INTO "User" ("id", "username", "fullName", "password", "role")
-      VALUES (?, ?, ?, ?, ?)
-      ON CONFLICT("username") DO UPDATE SET
-        "fullName" = excluded."fullName",
-        "password" = excluded."password",
-        "role" = excluded."role"
-    `);
+async function main() {
+	await prisma.user.upsert({
+		where: { id: "seed_erik" },
+		create: {
+			id: "seed_erik",
+			username: "Erik",
+			fullName: "Erik Eriksson",
+			password: "test1234",
+			role: "EDITOR",
+		},
+		update: { fullName: "Erik Eriksson", password: "test1234", role: "EDITOR" },
+	});
+	await prisma.user.upsert({
+		where: { id: "seed_carl" },
+		create: {
+			id: "seed_carl",
+			username: "Carl",
+			fullName: "Carl Carlson",
+			password: "test1234",
+			role: "CONTRIBUTOR",
+		},
+		update: {
+			fullName: "Carl Carlson",
+			password: "test1234",
+			role: "CONTRIBUTOR",
+		},
+	});
 
-		const upsertContentItem = db.prepare(`
-      INSERT INTO "ContentItem" ("id", "title", "status", "authorId", "deadline", "type")
-      VALUES (?, ?, ?, ?, ?, ?)
-      ON CONFLICT("id") DO UPDATE SET
-        "title" = excluded."title",
-        "status" = excluded."status",
-        "authorId" = excluded."authorId",
-        "deadline" = excluded."deadline",
-        "type" = excluded."type"
-    `);
-
-		upsertUser.run("seed_erik", "Erik", "Erik", "test1234", "EDITOR");
-		upsertUser.run("seed_carl", "Carl", "Carl", "test1234", "CONTRIBUTOR");
-
-		upsertContentItem.run(
-			"seed_content_erik_1",
-			"Q3 Editorial Calendar",
-			"Draft",
-			"seed_erik",
-			"2026-07-05T09:00:00.000Z",
-			"Article",
-		);
-		upsertContentItem.run(
-			"seed_content_erik_2",
-			"Interview with Product Team",
-			"Review",
-			"seed_erik",
-			null,
-			"Podcast",
-		);
-		upsertContentItem.run(
-			"seed_content_carl_1",
-			"Launch Teaser Script",
-			"Idea",
-			"seed_carl",
-			"2026-07-01T12:00:00.000Z",
-			"Video",
-		);
-		upsertContentItem.run(
-			"seed_content_carl_2",
-			"How We Built the Tracker",
-			"Published",
-			"seed_carl",
-			null,
-			"Article",
-		);
-
-		console.log(
-			"Seeded test users and content items for Erik (EDITOR) and Carl (CONTRIBUTOR)",
-		);
-	} finally {
-		db.close();
-	}
+	await prisma.contentItem.upsert({
+		where: { id: "seed_content_erik_1" },
+		create: {
+			id: "seed_content_erik_1",
+			title: "Q3 Editorial Calendar",
+			status: "Draft",
+			authorId: "seed_erik",
+			deadline: new Date("2026-07-05T09:00:00.000Z"),
+			type: "Article",
+		},
+		update: {
+			title: "Q3 Editorial Calendar",
+			status: "Draft",
+			authorId: "seed_erik",
+			deadline: new Date("2026-07-05T09:00:00.000Z"),
+			type: "Article",
+		},
+	});
+	await prisma.contentItem.upsert({
+		where: { id: "seed_content_erik_2" },
+		create: {
+			id: "seed_content_erik_2",
+			title: "Interview with Product Team",
+			status: "Review",
+			authorId: "seed_erik",
+			deadline: null,
+			type: "Podcast",
+		},
+		update: {
+			title: "Interview with Product Team",
+			status: "Review",
+			authorId: "seed_erik",
+			deadline: null,
+			type: "Podcast",
+		},
+	});
+	await prisma.contentItem.upsert({
+		where: { id: "seed_content_carl_1" },
+		create: {
+			id: "seed_content_carl_1",
+			title: "Launch Teaser Script",
+			status: "Idea",
+			authorId: "seed_carl",
+			deadline: new Date("2026-07-01T12:00:00.000Z"),
+			type: "Video",
+		},
+		update: {
+			title: "Launch Teaser Script",
+			status: "Idea",
+			authorId: "seed_carl",
+			deadline: new Date("2026-07-01T12:00:00.000Z"),
+			type: "Video",
+		},
+	});
+	await prisma.contentItem.upsert({
+		where: { id: "seed_content_carl_2" },
+		create: {
+			id: "seed_content_carl_2",
+			title: "How We Built the Tracker",
+			status: "Published",
+			authorId: "seed_carl",
+			deadline: null,
+			type: "Article",
+		},
+		update: {
+			title: "How We Built the Tracker",
+			status: "Published",
+			authorId: "seed_carl",
+			deadline: null,
+			type: "Article",
+		},
+	});
 }
 
-main();
+main()
+	.then(() => prisma.$disconnect())
+	.catch(async (e) => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
+	});
