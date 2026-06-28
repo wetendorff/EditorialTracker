@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useTransition } from "react";
-import { createContentItem } from "@/app/actions/content";
+import { createContentItem } from "@/lib/actions/content";
 import { STATUS_OPTIONS, TYPE_OPTIONS } from "@/lib/content-status";
 
 export function ContentItemCreateDialog() {

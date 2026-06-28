@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { ContentItemWithAuthor } from "@/app/actions/content";
 import type { ContentStatus } from "@/app/generated/prisma/client";
+import type { ContentItemWithAuthor } from "@/lib/actions/content";
 import ContentListItem from "./ContentListItem";
 
 type FilterStatus = "All" | ContentStatus;

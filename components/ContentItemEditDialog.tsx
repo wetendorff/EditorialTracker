@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef, useTransition } from "react";
-import type { ContentItemWithAuthor } from "@/app/actions/content";
-import { updateContentItem } from "@/app/actions/content";
 import type { ContentStatus } from "@/app/generated/prisma/client";
+import type { ContentItemWithAuthor } from "@/lib/actions/content";
+import { updateContentItem } from "@/lib/actions/content";
 import { TYPE_OPTIONS } from "@/lib/content-status";
 
 export function ContentItemEditDialog({

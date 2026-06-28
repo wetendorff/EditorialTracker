@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ContentItemWithAuthor } from "@/app/actions/content";
+import type { ContentItemWithAuthor } from "@/lib/actions/content";
 import { formatDeadline } from "../lib/format";
 import { StatusDot } from "./StatusDot";
 

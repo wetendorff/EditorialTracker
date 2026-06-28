@@ -1,14 +1,14 @@
 import Link from "next/link";
-import {
-	archiveContentItem,
-	getContentItem,
-	publishContentItem,
-} from "@/app/actions/content";
 import { ContentItemEditDialog } from "@/components/ContentItemEditDialog";
 import { Paragraphs } from "@/components/Paragraphs";
 import Pill from "@/components/Pill";
 import { StatusDot } from "@/components/StatusDot";
 import TopMenu from "@/components/TopMenu";
+import {
+	archiveContentItem,
+	getContentItem,
+	publishContentItem,
+} from "@/lib/actions/content";
 import { nextStatuses } from "@/lib/content-status";
 import { formatDeadline } from "@/lib/format";
 import { requireSessionUser } from "@/lib/session";

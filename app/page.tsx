@@ -2,7 +2,7 @@ import { ContentItemCreateDialog } from "@/components/ContentItemCreateDialog";
 import TopMenu from "@/components/TopMenu";
 import { requireSessionUser } from "@/lib/session";
 import ContentItemList from "../components/ContentItemList";
-import { getContentItems } from "./actions/content";
+import { getContentItems } from "../lib/actions/content";
 
 export default async function Home() {
 	const user = await requireSessionUser();
