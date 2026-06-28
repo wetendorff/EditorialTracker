@@ -3,15 +3,12 @@
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import type { UserModel } from "@/app/generated/prisma/internal/prismaNamespace";
 import Pill from "@/components/Pill";
 import TextDivider from "@/components/TextDivider";
 import UserLoginButton from "@/components/UserLoginButton";
 
-type QuickLoginUser = {
-	id: string;
-	username: string;
-	role: "EDITOR" | "CONTRIBUTOR";
-};
+type QuickLoginUser = Pick<UserModel, "id" | "username" | "role">;
 
 type LoginFormProps = {
 	showQuickLogin: boolean;
@@ -34,7 +31,6 @@ export default function LoginForm({
 			username,
 			password,
 			redirect: false,
-			callbackUrl: "/",
 		});
 
 		setIsPending(false);
@@ -44,11 +40,13 @@ export default function LoginForm({
 			return;
 		}
 
-		router.push(result?.url ?? "/");
+		router.push("/");
 		router.refresh();
 	}
 
-	async function onManualLoginSubmit(event: React.FormEvent<HTMLFormElement>) {
+	async function onManualLoginSubmit(
+		event: React.SyntheticEvent<HTMLFormElement>,
+	) {
 		event.preventDefault();
 
 		const formData = new FormData(event.currentTarget);
@@ -70,7 +68,7 @@ export default function LoginForm({
 	return (
 		<main className="min-h-screen grid place-items-center p-6">
 			<section className="w-full max-w-105 bg-surface border border-border rounded-xl px-8 py-9">
-				<h1 className="mb-6 text-[26px] tracking-[-.01em]">Login</h1>
+				<h1 className="mb-6 text-[26px]">Login</h1>
 
 				{showQuickLogin ? (
 					<>
