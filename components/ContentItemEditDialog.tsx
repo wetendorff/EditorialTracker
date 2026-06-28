@@ -16,7 +16,7 @@ export function ContentItemEditDialog({
 	const ref = useRef<HTMLDialogElement>(null);
 	const [, startTransition] = useTransition();
 
-	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+	function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
 		event.preventDefault();
 		const formData = new FormData(event.currentTarget);
 		startTransition(async () => {
