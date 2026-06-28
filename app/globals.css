@@ -5,10 +5,9 @@
 	--foreground: #242424;
 	--surface: #f9f9f3;
 	--muted: #96908a;
+	--border: #e2e1d8;
 	--accent: #fc7230;
-	--serif:
-		Baskerville, "Goudy Old Style", "Hoefler Text", Garamond, Georgia, serif;
-	--sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+	--sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 	--mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
 
@@ -17,11 +16,10 @@
 	--color-foreground: var(--foreground);
 	--color-surface: var(--surface);
 	--color-muted: var(--muted);
-	--color-border: #e2e1d8;
+	--color-border: var(--border);
 	--color-accent: var(--accent);
 	--font-sans: var(--sans);
 	--font-mono: var(--mono);
-	--font-serif: var(--serif);
 }
 
 body {

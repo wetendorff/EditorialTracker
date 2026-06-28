@@ -70,7 +70,7 @@ export default function LoginForm({
 	return (
 		<main className="min-h-screen grid place-items-center p-6">
 			<section className="w-full max-w-105 bg-surface border border-border rounded-xl px-8 py-9">
-				<h1 className="mb-6 font-serif text-[26px] tracking-[-.01em]">Login</h1>
+				<h1 className="mb-6 text-[26px] tracking-[-.01em]">Login</h1>
 
 				{showQuickLogin ? (
 					<>

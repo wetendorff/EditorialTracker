@@ -37,7 +37,7 @@ export function ContentItemCreateDialog() {
 				}}
 			>
 				<form onSubmit={handleSubmit} className="grid gap-4">
-					<h2 className="font-serif text-2xl">New content item</h2>
+					<h2 className="text-2xl">New content item</h2>
 					<div>
 						<label htmlFor="title">Title</label>
 						<input id="title" name="title" className="input" required />

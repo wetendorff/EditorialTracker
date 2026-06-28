@@ -45,7 +45,7 @@ export function ContentItemEditDialog({
 				}}
 			>
 				<form onSubmit={handleSubmit} className="grid gap-4">
-					<h2 className="font-serif text-3xl">Edit content item</h2>
+					<h2 className="text-3xl">Edit content item</h2>
 					<div>
 						<label htmlFor="title">Title</label>
 						<input

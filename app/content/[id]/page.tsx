@@ -45,7 +45,7 @@ export default async function ContentDetailPage({
 						<Pill>{item.type}</Pill>
 					</div>
 					<div className="mt-2">
-						<h2 className="font-serif text-3xl">{item.title}</h2>
+						<h2 className="text-3xl">{item.title}</h2>
 						<p className="text-xs text-muted mt-2">
 							By {item.author.fullName}
 							{item.deadline && (

@@ -19,7 +19,7 @@ export default function ContentListItem({
 				className="w-full flex items-center justify-between gap-x-3 gap-y-1"
 			>
 				<div className="min-w-0">
-					<div className="truncate font-serif text-lg">{item.title}</div>
+					<div className="truncate text-lg">{item.title}</div>
 					<div className="truncate text-muted text-sm">
 						{item.type} · By {item.author.fullName}
 					</div>
