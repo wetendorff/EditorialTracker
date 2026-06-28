@@ -84,7 +84,7 @@ export async function updateContentItem(id: string, formData: FormData) {
 	}
 
 	const title = formData.get("title") as string;
-	const status = formData.get("status") as ContentStatus;
+	const status = (formData.get("status") as ContentStatus) ?? existing.status;
 	const type = formData.get("type") as ContentType;
 	const body = (formData.get("body") as string) || null;
 	const deadlineRaw = formData.get("deadline") as string | null;
